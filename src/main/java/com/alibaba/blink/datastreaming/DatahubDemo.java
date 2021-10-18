@@ -46,7 +46,7 @@ public class DatahubDemo implements Serializable {
         //set Source Function
         DatahubSourceFunction datahubSource =
                 new DatahubSourceFunction(endPoint, projectName, topicSourceName, accessId, accessKey, datahubStartInMs,
-                        Long.MAX_VALUE, 1, 1, 1);
+                        Long.MAX_VALUE, 300, 1000, 100);//需要根据具体情况调整相应的参数
 
         env.addSource(datahubSource)
                 .flatMap(new FlatMapFunction<List<RecordEntry>, Tuple4<String,String,Double,Long>>() {
